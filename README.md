@@ -1,2 +1,3 @@
-# myportfolio
-This is my professional portfolio
+#Shreyas Ramnath's portfolio
+
+This is my professional portfolio. It uses AWS and ReactJS.
