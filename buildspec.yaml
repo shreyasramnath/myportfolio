@@ -1,0 +1,13 @@
+Version: 0.1
+
+phases:
+  build:
+    commands:
+      - echo nothing to do yet!
+  artifacts:
+    files:
+      - index.html
+      - favicon.ico
+      - Shreyas+Ramnath.pdf
+      - styles/main.css
+      - images/*
