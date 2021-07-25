@@ -18,6 +18,10 @@ def lambda_handler(event, context):
                 portfolio_bucket.Object(nm).Acl().put(ACL='public-read')
         topic = sns.Topic('arn:aws:sns:us-east-1:048847678797:portfolioTopic')
         topic.publish(Subject='Test', Message='k')
-    except: topic.publish(Subject='fail', Message='f')
-    raise
-
+    except: 
+            topic.publish(Subject='fail', Message='f')
+            raise
+    return {
+        'statusCode': 200,
+        'body': json.dumps('Hello from Lambda!')
+    }
