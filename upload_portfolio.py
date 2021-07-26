@@ -5,6 +5,7 @@ import zipfile
 def lambda_handler(event, context):
     sns = boto3.resource('sns')
     s3 = boto3.resource('s3')
+    pipeline = boto3.client('codepipeline')
     location = {
         "bucketName": "portfoliobuild.shreyasramnath.com",
         "objectKey": "portfoliobuild.zip"
@@ -34,7 +35,7 @@ def lambda_handler(event, context):
     except: 
             topic.publish(Subject='Fail', Message='failure')
             raise
-    return {
-        'statusCode': 200,
-        'body': json.dumps('Hello from Lambda!')
-    }
+    response = pipeline.put_job_success_result(
+        jobId=event['CodePipeline.job']['id']
+    )
+    return response
